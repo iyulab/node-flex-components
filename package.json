@@ -1,0 +1,50 @@
+{
+  "name": "@iyulab/flex-components",
+  "version": "0.1.0",
+  "description": "Heavy/advanced components and data utilities (e.g. flex-chart)",
+  "keywords": [
+    "components",
+    "chart",
+    "data",
+    "preprocess"
+  ],
+  "license": "MIT",
+  "author": "iyulab",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iyulab/node-flex-components.git"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./data": {
+      "types": "./dist/data/index.d.ts",
+      "import": "./dist/data/index.js"
+    }
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "vite build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^25.8.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.13",
+    "vite-plugin-dts": "^5.0.0",
+    "vitest": "^4.1.8"
+  }
+}
