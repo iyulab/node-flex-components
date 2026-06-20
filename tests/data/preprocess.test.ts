@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { dropMissing, applyCutoff } from '../../src/data/preprocess.js';
+import { dropMissing, applyCutoff, applyCutoffRows } from '../../src/data/preprocess.js';
 
 /**
  * 분석용 데이터 전처리 헬퍼 검증.
@@ -98,5 +98,64 @@ describe('applyCutoff', () => {
     const data = [1, 2, 3];
     applyCutoff(data, { low: 2 });
     expect(data).toEqual([1, 2, 3]);
+  });
+});
+
+describe('applyCutoffRows', () => {
+  // (date, value) 쌍 — 차트 x축이 date를 쓰므로 행을 보존하며 필터링해야 한다.
+  const rows = [
+    ['2026-01-01', '1'],
+    ['2026-01-02', '5'],
+    ['2026-01-03', '10'],
+    ['2026-01-04', '15'],
+    ['2026-01-05', '20'],
+  ];
+
+  it('값 열 기준 범위 밖 행을 제외하고 다른 열(날짜)은 보존한다', () => {
+    expect(applyCutoffRows(rows, 1, { low: 5, high: 15 })).toEqual([
+      ['2026-01-02', '5'],
+      ['2026-01-03', '10'],
+      ['2026-01-04', '15'],
+    ]);
+  });
+
+  it('low만/ high만 적용한다 (경계값 포함)', () => {
+    expect(applyCutoffRows(rows, 1, { low: 10 })).toEqual([
+      ['2026-01-03', '10'],
+      ['2026-01-04', '15'],
+      ['2026-01-05', '20'],
+    ]);
+    expect(applyCutoffRows(rows, 1, { high: 5 })).toEqual([
+      ['2026-01-01', '1'],
+      ['2026-01-02', '5'],
+    ]);
+  });
+
+  it('값 열이 비숫자·결측인 행은 제외한다 (applyCutoff의 NaN 제외 미러)', () => {
+    const data = [
+      ['2026-01-01', '1'],
+      ['2026-01-02', ''],     // 빈 셀
+      ['2026-01-03', 'abc'],  // 비숫자
+      ['2026-01-04', '  '],   // 공백
+      ['2026-01-05', '4'],
+    ];
+    expect(applyCutoffRows(data, 1, {})).toEqual([
+      ['2026-01-01', '1'],
+      ['2026-01-05', '4'],
+    ]);
+  });
+
+  it('범위 미지정 시 값 열이 숫자인 행을 모두 유지한다', () => {
+    expect(applyCutoffRows(rows, 1, {})).toEqual(rows);
+  });
+
+  it('빈 입력은 빈 배열을 반환한다', () => {
+    expect(applyCutoffRows([], 1, { low: 0, high: 1 })).toEqual([]);
+  });
+
+  it('원본 배열을 변경하지 않는다', () => {
+    const data = [['a', '1'], ['b', '99']];
+    applyCutoffRows(data, 1, { high: 10 });
+    expect(data).toEqual([['a', '1'], ['b', '99']]);
   });
 });

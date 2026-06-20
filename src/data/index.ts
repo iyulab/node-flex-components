@@ -1,2 +1,2 @@
-export { dropMissing, applyCutoff } from './preprocess.js';
+export { dropMissing, applyCutoff, applyCutoffRows } from './preprocess.js';
 export type { CutoffRange } from './preprocess.js';
