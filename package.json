@@ -18,19 +18,23 @@
     "dist",
     "package.json",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE"
   ],
   "type": "module",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=20"
+  },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
     },
     "./data": {
-      "types": "./dist/data/index.d.ts",
-      "import": "./dist/data/index.js"
+      "types": "./src/data/index.d.ts",
+      "import": "./src/data/index.js"
     }
   },
   "sideEffects": false,
