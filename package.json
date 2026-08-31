@@ -39,6 +39,7 @@
   },
   "sideEffects": false,
   "scripts": {
+    "preversion": "node ../../scripts/preversion-check.mjs",
     "build": "npm run typecheck && vite build",
     "test": "vitest run",
     "test:watch": "vitest",
