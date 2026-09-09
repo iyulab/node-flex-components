@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.1] - 2026-09-10
+
+### Changed
+
+- **`engines.node` is now declared as `>=20`.** This states a requirement the package already
+  had rather than introducing one — it is built and tested on Node 20 and above, and nothing
+  about what it does at runtime changed. Installing on an older Node now produces a warning
+  (or an error under `engine-strict`) instead of a working install that fails later.
+
+- **The changelog ships with the package** (`files` now includes `CHANGELOG.md`), so what
+  changed between versions is readable from an installed copy rather than only on the
+  repository.
+
 ## [0.2.0] - 2026-06-20
 
 ### Added
