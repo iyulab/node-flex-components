@@ -4,7 +4,7 @@ import { dropMissing, applyCutoff, applyCutoffRows } from '../../src/data/prepro
 /**
  * 분석용 데이터 전처리 헬퍼 검증.
  *
- * 배경(ISSUE-20260609-flextable-missing-cutoff-helpers):
+ * 배경:
  * 시트 입력 데이터에서 (1) 비어있는/비숫자 셀이 있는 행 제외,
  * (2) 범위(cutoff low/high) 밖 값 제외가 여러 도구에서 중복 구현되고 있어
  * 범용 유틸로 정본화한다.
