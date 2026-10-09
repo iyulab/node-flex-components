@@ -1,6 +1,6 @@
 {
   "name": "@iyulab/flex-components",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Data preprocessing utilities for sheet-shaped data and number arrays (pure functions)",
   "keywords": [
     "components",
