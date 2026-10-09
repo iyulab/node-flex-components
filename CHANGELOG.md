@@ -1,5 +1,16 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- `applyCutoffRows` is exported from the package root too (it was only on `./data`), so the root and `./data` give the
+  same three functions.
+
+### Documentation
+
+- The README documents `applyCutoffRows` and no longer announces an unbuilt chart component.
+
 ## [0.2.1] - 2026-09-10
 
 ### Changed

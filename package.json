@@ -1,7 +1,7 @@
 {
   "name": "@iyulab/flex-components",
   "version": "0.2.1",
-  "description": "Heavy/advanced components and data utilities (e.g. flex-chart)",
+  "description": "Data preprocessing utilities for sheet-shaped data and number arrays (pure functions)",
   "keywords": [
     "components",
     "chart",
