@@ -2,6 +2,10 @@
 
 분석용 데이터 전처리 유틸리티 패키지입니다 — 시트 형태(2차원 문자열 배열)의 데이터와 숫자 배열을 다루는 순수 함수.
 
+```bash
+npm install @iyulab/flex-components
+```
+
 ## Data Utilities
 
 ```ts
